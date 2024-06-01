@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Field {
-    private List<List<Cell>> cells;
+    private final List<List<Cell>> cells;
 
     private Field(int N, int M, boolean[][] blockedCells) {
         this.cells = new ArrayList<>();
@@ -20,7 +20,15 @@ public class Field {
     public static Field constructField(String[] r) {
 
         int N = r.length;
+        if (N == 0) {
+            return new Field(0, 0, new boolean[0][0]);
+        }
+
         int M = r[0].length();
+        if (M == 0) {
+            return new Field(0, 0, new boolean[0][0]);
+        }
+
         boolean[][] blockedCells = new boolean[N][M];
         for (int i = 0; i < N; i++) {
             for (int j = 0; j < M; j++) {
@@ -61,7 +69,8 @@ public class Field {
         return nextCell;
     }
 
-    public Cell getStartCell() {
-        return cells.get(0).get(0);
+    public List<List<Cell>> getCells() {
+        return cells;
     }
+
 }

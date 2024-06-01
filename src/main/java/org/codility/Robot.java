@@ -10,7 +10,7 @@ public class Robot {
     private HashSet<VisitedCell> visitedCells;
 
 
-    public Robot(Cell startCell, Field field) {
+    public Robot(Field field, Cell startCell) {
         this.currentCell = startCell;
         this.direction = Direction.RIGHT;
         this.field = field;
@@ -18,6 +18,10 @@ public class Robot {
     }
 
     public int clean() {
+        if (currentCell.isBlocked) {
+            return 0;
+        }
+
         int cleanedCells = 0;
         while (true) {
             if (!currentCell.isClean) {

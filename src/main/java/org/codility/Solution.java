@@ -5,9 +5,15 @@ public class Solution {
 
         Field field = Field.constructField(R);
 
-        Robot robot = new Robot(field.getStartCell(), field);
+        if (field.getCells().isEmpty()) {
+            return 0;
+        }
+
+        Robot robot = new Robot(field, field.getCells().get(0).get(0));
 
         return robot.clean();
+
+
 
     }
 }

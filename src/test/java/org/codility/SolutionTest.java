@@ -33,6 +33,16 @@ class SolutionTest {
                         "......"
                 }
         ));
+
+        assertEquals(0, solution.solution(
+                new String[]{""}
+        ));
+        assertEquals(0, solution.solution(
+                new String[]{}
+        ));
+        assertEquals(0, solution.solution(
+                new String[]{"X"}
+        ));
     }
 
 }
